@@ -7,6 +7,7 @@
     <groupId>com.tamara</groupId>
     <artifactId>guess-the-number-game</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
