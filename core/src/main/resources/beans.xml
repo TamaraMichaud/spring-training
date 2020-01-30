@@ -7,10 +7,22 @@
     <bean id="numberGenerator" class="com.tamara.NumberGeneratorImpl"/>
     <!--    ^^ id and name is not usually Required, if not provided,
         the container will generate a unique name automatically -->
+
+
+<!--    <bean id="game" class="com.tamara.GameImpl">-->
+<!--        <constructor-arg ref="numberGenerator"/>-->
+<!--&lt;!&ndash;        this is because this class has a constructor which requires an object&ndash;&gt;-->
+<!--&lt;!&ndash;        the object needs to be another bean, which is true here&ndash;&gt;-->
+<!--    </bean>-->
+<!--^^ CONSTRUCTOR-BASED DEPENDENCY INJECTION - see commented code in class for full flow ALT1 -->
+
     <bean id="game" class="com.tamara.GameImpl">
-        <constructor-arg ref="numberGenerator"/>
-<!--        this is because this class has a constructor which requires an object-->
-<!--        the object needs to be another bean, which is true here-->
+        <property name="numberGenerator" ref="numberGenerator"/>
+<!--                  ^^ NAME must match the name of the field in the class rather than any other bean-->
+<!--                  ^^ REF must match the name of the bean for this object-->
+<!--                    (in this case they happen to be the same)-->
     </bean>
+<!--    ^^ SETTER-BASED DEPENDENCY INJECTION - see commented code in class for full flow ALT2 -->
+
 
 </beans>
