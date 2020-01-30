@@ -14,17 +14,30 @@ public class Main {
     public static void main(String[] args) {
         LOGGER.warn("BE CAREFUL!!");
 
-        //CREATE CONTAINER
+        // -- Create context (container)
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(CONFIG_LOCATION);
-        NumberGenerator numberGenerator = context.getBean("numberGenerator", NumberGenerator.class);
-        /* ^^ although you can't see it here; in the beans.xml file we have set "numberGenerator" bean equal to
-        numberGeneratorIMPL -> the implementation.
-         */
 
-        // CALL A METHOD FROM THE OBJECT CREATED BY OUR BEAN GENERATOR
+        // -- Get "numberGenerator" bean from context (container)
+        NumberGenerator numberGenerator = context.getBean("numberGenerator", NumberGenerator.class);
+            /* ^^ although you can't see it here; in the beans.xml file we have set "numberGenerator" bean equal to
+            numberGeneratorIMPL -> the implementation.*/
+
+        // -- Call a method from the object retreived from container
         int number = numberGenerator.next();
-        LOGGER.info("got generated number of: {}", number);
-        // ^^ this curly-brace variable transposition is a feature of LOGBACK logger... noice
+            LOGGER.info("got generated number of: {}", number);
+            // ^^ this curly-brace variable transposition is a feature of LOGBACK logger... noice!
+
+        // -- Get "Game" bean from context (containter)
+        Game game = context.getBean(Game.class);
+            /* ^^ this time we call getBean() with only the .class value compared to at :21, same-same*/
+
+        // -- Call a method from Game (start the game...)
+        game.reset();
+
+
+
+
+
 
         // CLOSE CONTAINER
         context.close();

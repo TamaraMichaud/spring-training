@@ -5,10 +5,9 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <bean id="numberGenerator" class="com.tamara.NumberGeneratorImpl"/>
+<bean id="game" class="com.tamara.GameImpl"/>
 
-
-
-<!--    ^^ id and name is not usually required, if not provided,
+    <!--    ^^ id and name is not usually Required, if not provided,
         the container will generate a unique name automatically -->
 
 
