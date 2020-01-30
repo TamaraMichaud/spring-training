@@ -8,12 +8,3 @@ by the IoC Container.
 :O
 
 see    docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html#beans-basics
-
-
-CONSTRUCTOR-BASED DEPENDENCY INJECTION
-- simply build your constructor with it's required args.
-- and in beans.xml, add the internal tag "<constructor-arg ref=" with ref= the bean-id of the required arg obj
-
-
-SETTER-BASED DEPENDENCY INJECTION
-- container will call the setters in your bean after invoking a no-args constructor (i guess this means you can't have both perhaps...??)

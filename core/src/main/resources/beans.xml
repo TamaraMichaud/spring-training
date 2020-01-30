@@ -21,6 +21,10 @@
 <!--                  ^^ NAME must match the name of the field in the class rather than any other bean-->
 <!--                  ^^ REF must match the name of the bean for this object-->
 <!--                    (in this case they happen to be the same)-->
+
+<!--        ^^ in this example, NumberGenerator is a class.  but if we had simply an "int" - we would not use "ref=" but rather-->
+<!--        "value=" and offer a "safe" default value (probably).  Spring will convert "1" to an actual int automatically -->
+
     </bean>
 <!--    ^^ SETTER-BASED DEPENDENCY INJECTION - see commented code in class for full flow ALT2 -->
 
