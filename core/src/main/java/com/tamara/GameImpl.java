@@ -18,8 +18,13 @@ public class GameImpl implements Game {
     private int remainingGuesses;
     private boolean validNumberRange = true;
 
+    // constructor-based dependency injection
+    public GameImpl(NumberGenerator numberGenerator) {
+        this.numberGenerator = numberGenerator;
+    }
 
     // private methods
+
     private void checkValidNumberRange(){
         this.validNumberRange = (this.guess >= this.smallest) && (this.guess <= this.biggest);
     }

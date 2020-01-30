@@ -4,11 +4,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<bean id="numberGenerator" class="com.tamara.NumberGeneratorImpl"/>
-<bean id="game" class="com.tamara.GameImpl"/>
-
+    <bean id="numberGenerator" class="com.tamara.NumberGeneratorImpl"/>
     <!--    ^^ id and name is not usually Required, if not provided,
         the container will generate a unique name automatically -->
-
+    <bean id="game" class="com.tamara.GameImpl">
+        <constructor-arg ref="numberGenerator"/>
+<!--        this is because this class has a constructor which requires an object-->
+<!--        the object needs to be another bean, which is true here-->
+    </bean>
 
 </beans>
