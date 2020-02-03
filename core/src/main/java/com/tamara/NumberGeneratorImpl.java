@@ -1,7 +1,11 @@
 package com.tamara;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Random;
 
+//@Component("nameOfMyBean")
+@Component
 public class NumberGeneratorImpl implements NumberGenerator {
 
 //    fields

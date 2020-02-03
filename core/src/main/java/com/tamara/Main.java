@@ -18,7 +18,11 @@ public class Main {
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(CONFIG_LOCATION);
 
         // -- Get "numberGenerator" bean from context (container)
-        NumberGenerator numberGenerator = context.getBean("numberGenerator", NumberGenerator.class);
+//        NumberGenerator numberGenerator = context.getBean("nameOfMyBean", NumberGenerator.class);
+        NumberGenerator numberGenerator = context.getBean(NumberGenerator.class); // << trashed the name part since it's a bit shit
+        // ^^ we can have this aimed at the interface because there is only one implementation of this class... however if there were
+        // multiple we'd need to use qualifiers... (later in course)
+
             /* ^^ although you can't see it here; in the beans.xml file we have set "numberGenerator" bean equal to
             numberGeneratorIMPL -> the implementation.*/
 
