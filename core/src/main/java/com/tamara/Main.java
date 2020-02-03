@@ -1,5 +1,6 @@
 package com.tamara;
 
+import com.tamara.messageGeneratorChallenge.MessageGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -43,6 +44,9 @@ public class Main {
         // ^^ now we want to use the Spring container's bean lifecycle callbacks to do all "init()"-type method calls...
         // ^^ and any "close" calls...   see "BeanLifecycleCallbacks.txt" & @PostConstruct / @PreDestroy tags in game class.
 
+
+        MessageGenerator yoMama = context.getBean(MessageGenerator.class);
+        LOGGER.debug(yoMama.getMainMessage());
 
 
 
