@@ -3,6 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    ^^ rather than "init-method" per bean, we could, if we wanted, add another attribute in this block that-->
+<!--    standardises them all to use the same name; i.e. rest:    default-init-method="reset"-->
 
     <bean id="numberGenerator" class="com.tamara.NumberGeneratorImpl"/>
     <!--    ^^ id and name is not usually Required, if not provided,
@@ -16,8 +18,12 @@
 <!--    </bean>-->
 <!--^^ CONSTRUCTOR-BASED DEPENDENCY INJECTION - see commented code in class for full flow ALT1 -->
 
+<!--    <bean id="game" class="com.tamara.GameImpl" init-method="reset">-->
+                                                 <!-- ^^example of xml lifecycle callback... not best practice. requires that
+                                                      a reset() method exists in this class. requires no standardisation,
+                                                       the next one may be called potato() etc.  -->
     <bean id="game" class="com.tamara.GameImpl">
-        <property name="numberGenerator" ref="numberGenerator"/>
+    <property name="numberGenerator" ref="numberGenerator"/>
 <!--                  ^^ NAME must match the name of the field in the class rather than any other bean-->
 <!--                  ^^ REF must match the name of the bean for this object-->
 <!--                    (in this case they happen to be the same)-->
@@ -27,6 +33,9 @@
 
     </bean>
 <!--    ^^ SETTER-BASED DEPENDENCY INJECTION - see commented code in class for full flow ALT2 -->
+
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+
 
 
 </beans>

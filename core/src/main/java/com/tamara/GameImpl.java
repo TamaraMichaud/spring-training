@@ -3,6 +3,9 @@ package com.tamara;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class GameImpl implements Game {
 
     // constants
@@ -18,12 +21,34 @@ public class GameImpl implements Game {
     private int remainingGuesses;
     private boolean validNumberRange = true;
 
+    @PostConstruct
+    @Override
+    public void reset() {
+        this.smallest = 0;
+        this.guess = 0;
+        this.remainingGuesses = guessCount;
+        this.biggest = numberGenerator.getMaxNumber();
+        this.number = numberGenerator.next();
+        LOGGER.debug("Number chosen is {}", this.number);
+    }
+    // ^^ START / RESTART the game
+
+
+    @PreDestroy
+    public void end(){
+        LOGGER.info("in-game preDestroy()");
+    }
+
+
+
+//    constructor(s)
+
 //ALT1    // constructor-based dependency injection
 //    public GameImpl(NumberGenerator numberGenerator) {
 //        this.numberGenerator = numberGenerator;
 //    }
 
-//ALT2    // setter-based dependency injection
+    //ALT2    // setter-based dependency injection
     public void setNumberGenerator(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
     }
@@ -40,18 +65,6 @@ public class GameImpl implements Game {
     // public methods
 
     @Override
-    public void reset() {
-        this.smallest = 0;
-        this.guess = 0;
-        this.remainingGuesses = guessCount;
-        this.biggest = numberGenerator.getMaxNumber();
-        this.number = numberGenerator.next();
-        LOGGER.debug("Number chosen is {}", this.number);
-    }
-    // ^^ START / RESTART the game
-
-
-    @Override
     public void check() {
         checkValidNumberRange();
         if(validNumberRange) {
@@ -65,10 +78,6 @@ public class GameImpl implements Game {
         remainingGuesses--;
 
     }
-
-
-
-
 
     @Override
     public int getNumber() {

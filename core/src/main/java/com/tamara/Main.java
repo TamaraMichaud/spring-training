@@ -32,9 +32,9 @@ public class Main {
             /* ^^ this time we call getBean() with only the .class value compared to at :21, same-same*/
 
         // -- Call a method from Game (start the game...)
-        game.reset();
-
-
+//        game.reset();
+        // ^^ now we want to use the Spring container's bean lifecycle callbacks to do all "init()"-type method calls...
+        // ^^ and any "close" calls...   see "BeanLifecycleCallbacks.txt" & @PostConstruct / @PreDestroy tags in game class.
 
 
 
