@@ -11,3 +11,6 @@ and therefore want only the implementations to be dependent on the spring framew
 
 @Configuration
 - is processed as a @Component...
+
+
+@Bean methods; see AppConfig.java -> these examples are overly simplistic

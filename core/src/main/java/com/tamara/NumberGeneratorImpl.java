@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 
 //@Component("nameOfMyBean")
-@Component
+//@Component  // << using AppConfig @Bean methods rather than @ComponentScan... same-same
 public class NumberGeneratorImpl implements NumberGenerator {
 
 //    fields

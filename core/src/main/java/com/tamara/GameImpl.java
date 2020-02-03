@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component
+//@Component  // << using AppConfig @Bean methods rather than @ComponentScan... same-same
 public class GameImpl implements Game {
 
     // constants
