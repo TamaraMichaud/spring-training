@@ -20,6 +20,9 @@ Annotation: @Component
             }
 
 
+
+-- PROS AND CONS --
+
 -- XML --
 ** PROS:
 - separation of concerns; config is outside of classes and mostly in one place.

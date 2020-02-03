@@ -2,6 +2,7 @@ package com.tamara;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -12,7 +13,9 @@ public class GameImpl implements Game {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameImpl.class);
 
     // fields
+    @Autowired
     private NumberGenerator numberGenerator;
+    // ^^ this field is now 'autowired'
     private int guessCount = 10;
     private int number;
     private int guess;
@@ -49,10 +52,10 @@ public class GameImpl implements Game {
 //    }
 
     //ALT2    // setter-based dependency injection
-    public void setNumberGenerator(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
-    }
-
+//    public void setNumberGenerator(NumberGenerator numberGenerator) {
+//        this.numberGenerator = numberGenerator;
+//    }
+//    ^^ now superceded by @Autowired annotation
 
 
     // private methods

@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 <!--    ^^ rather than "init-method" per bean, we could, if we wanted, add another attribute in this block that-->
 <!--    standardises them all to use the same name; i.e. rest:    default-init-method="reset"-->
+
+
+    <context:annotation-config/>
+<!--    // ^^ this tag requires the above xlmns:context= line (auto-populated by intelliJ)-->
+<!--    // ^^ it also now produces a line in the logs confirming a large number of beans... (currently 2 are defined below, but my logs say 7)-->
+
 
     <bean id="numberGenerator" class="com.tamara.NumberGeneratorImpl"/>
     <!--    ^^ id and name is not usually Required, if not provided,
@@ -23,7 +32,8 @@
                                                       a reset() method exists in this class. requires no standardisation,
                                                        the next one may be called potato() etc.  -->
     <bean id="game" class="com.tamara.GameImpl">
-    <property name="numberGenerator" ref="numberGenerator"/>
+<!--        // vv this is now redundant, using @Autowired instead-->
+<!--        <property name="numberGenerator" ref="numberGenerator"/>-->
 <!--                  ^^ NAME must match the name of the field in the class rather than any other bean-->
 <!--                  ^^ REF must match the name of the bean for this object-->
 <!--                    (in this case they happen to be the same)-->
@@ -34,7 +44,9 @@
     </bean>
 <!--    ^^ SETTER-BASED DEPENDENCY INJECTION - see commented code in class for full flow ALT2 -->
 
-    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+
+<!--    // vv this is for the post-construct / pre-destroy (deprecated) annotations.  now sorted by: "<context:annotation-config/>"-->
+<!--    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->
 
 
 
