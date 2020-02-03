@@ -37,6 +37,7 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring-version}</version>
+
             </dependency>
 
 <!--            annotation-->
@@ -53,6 +54,7 @@
     <build>
         <plugins>
             <plugin>
+<!--                maven auto-compiles to java version 5... we must force it to use the correct one-->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-version}</version>
