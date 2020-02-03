@@ -25,7 +25,18 @@ public class MessageGeneratorImpl  implements MessageGenerator {
 
     @Override
     public String getResultMessage() {
-        return "RESULT MESSAGE";
+
+        LOGGER.info("Used method getResultMessage()");
+
+        if(game.getRemaining() == guessCount) {
+            return "Take your first guess: ";
+        }
+
+        if(!game.isValidNumberRange()) {
+            return "Not a valid number...";
+        }
+
+        return (game.isGameWon()) ? "Woop yeah!" : "Pah-ha, no mate..." + " Number was " + game.getNumber();
     }
 
     @Override

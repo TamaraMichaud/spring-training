@@ -46,7 +46,7 @@ public class Main {
 
 
         MessageGenerator yoMama = context.getBean(MessageGenerator.class);
-        LOGGER.debug(yoMama.getMainMessage());
+        LOGGER.debug(yoMama.getResultMessage());
 
 
 
