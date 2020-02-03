@@ -3,19 +3,22 @@ package com.tamara;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
-    private static final String CONFIG_LOCATION = "beans.xml";
+//    private static final String CONFIG_LOCATION = "beans.xml";
+// ^^ no longer used.  see AppConfig instead
 
     public static void main(String[] args) {
         LOGGER.warn("BE CAREFUL!!");
 
         // -- Create context (container)
-        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(CONFIG_LOCATION);
+//        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(CONFIG_LOCATION);
+        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         // -- Get "numberGenerator" bean from context (container)
 //        NumberGenerator numberGenerator = context.getBean("nameOfMyBean", NumberGenerator.class);
