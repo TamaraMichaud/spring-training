@@ -1,0 +1,43 @@
+-- COMBINING THE BEST OF BOTH --
+
+@Configuration
+with this tag we can build java-based configuration classes where we can centralise more of our annotation configuration.
+this will provide the type-safety of Java as well as clean separation of concerns.
+
+
+
+
+-- EXAMPLES of one vs other --
+
+XML:        <bean id="game" class="com.tamara.GameImpl">
+                <constructor-arg ref="numberGeneratorImpl">
+            </bean>
+
+Annotation: @Component
+            public class GameImpl implements Game {
+                @Autowired
+                private NumberGenerator numberGenerator;
+            }
+
+
+-- XML --
+** PROS:
+- separation of concerns; config is outside of classes and mostly in one place.
+- no need to recompile code when config is changed
+- more verbose and easier for noobs
+** CONS:
+- error-prone, typos are difficult to debug
+- not type-safe.  (Java code is validated by the IDE; types are verified etc.  not true in xml.   ...or kotlin etc!)
+- doesn't take advantage of the features of the language; requiring ugly constructs for what would otherwise be a simple java method.
+    - e.g. you can add an arg to a bean constructor but forget to inject it when defining the bean in the xml
+
+-- ANNOTATIONS --
+** PROS:
+- shorter and more concise
+- closer to the source
+- ensures type safety / semi self-documenting
+** CONS:
+- annotations are scattered throughout your code; decentralised configuration of metadata
+- clutter a POJO, could be argued it is not a pojo if it's full of annotations...
+- requires code recompilation whenever an annotation is changed
+- less intuitive for newbies
