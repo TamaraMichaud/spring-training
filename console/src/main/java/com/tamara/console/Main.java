@@ -1,11 +1,13 @@
-package com.tamara;
+package com.tamara.console;
 
+import com.tamara.AppConfig;
+import com.tamara.Game;
+import com.tamara.NumberGenerator;
 import com.tamara.messageGeneratorChallenge.MessageGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
 
