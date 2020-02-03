@@ -10,12 +10,20 @@
 <!--    standardises them all to use the same name; i.e. rest:    default-init-method="reset"-->
 
 
-    <context:annotation-config/>
+<!--    <context:annotation-config/>-->
 <!--    // ^^ this tag requires the above xlmns:context= line (auto-populated by intelliJ)-->
 <!--    // ^^ it also now produces a line in the logs confirming a large number of beans... (currently 2 are defined below, but my logs say 7)-->
+<!--// ^^ superceded by the below component-scan line-->
+
+<!--    // enabling component scanning-->
+    <context:component-scan base-package="com.tamara"/>
+<!--    // ^^ implicitly includes annotation-config.  still requires the extra xlmns:context value we got from that line previously-->
+<!--    ^^ this line means that we no longer need to explicitly declare beans in here. the container will scan the project classes-->
+<!--    for component annotations-->
 
 
-    <bean id="numberGenerator" class="com.tamara.NumberGeneratorImpl"/>
+
+<!--    <bean id="numberGenerator" class="com.tamara.NumberGeneratorImpl"/>-->
     <!--    ^^ id and name is not usually Required, if not provided,
         the container will generate a unique name automatically -->
 
@@ -31,7 +39,7 @@
                                                  <!-- ^^example of xml lifecycle callback... not best practice. requires that
                                                       a reset() method exists in this class. requires no standardisation,
                                                        the next one may be called potato() etc.  -->
-    <bean id="game" class="com.tamara.GameImpl">
+<!--    <bean id="game" class="com.tamara.GameImpl">-->
 <!--        // vv this is now redundant, using @Autowired instead-->
 <!--        <property name="numberGenerator" ref="numberGenerator"/>-->
 <!--                  ^^ NAME must match the name of the field in the class rather than any other bean-->
@@ -41,7 +49,7 @@
 <!--        ^^ in this example, NumberGenerator is a class.  but if we had simply an "int" - we would not use "ref=" but rather-->
 <!--        "value=" and offer a "safe" default value (probably).  Spring will convert "1" to an actual int automatically -->
 
-    </bean>
+<!--    </bean>-->
 <!--    ^^ SETTER-BASED DEPENDENCY INJECTION - see commented code in class for full flow ALT2 -->
 
 

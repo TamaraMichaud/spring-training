@@ -1,0 +1,5 @@
+** Stereotype annotations:
+@Component -> generic stereotype for any spring-managed component
+
+@Repository, @Service and @Controller -> specialisations of @Component for more specific use cases.
+e.g. in the  persistence, service and presentation layers respectively.
