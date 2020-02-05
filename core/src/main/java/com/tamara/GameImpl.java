@@ -1,9 +1,7 @@
 package com.tamara;
 
 import lombok.AccessLevel;
-import lombok.Data;
 import lombok.Getter;
-import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Data
+//@Data
+@Getter
 @Component
 public class GameImpl implements Game {
 
@@ -26,15 +25,15 @@ public class GameImpl implements Game {
 
     // vv these three with lombok annotations instead of all the commented
     //     getters and setters down below...
-    private boolean gameWon;
-    private int remaining;
-    private boolean gameLost;
+//    private boolean gameWon;
+//    private int remaining;
+//    private boolean gameLost;
 
     private int number;
     private int guess;
     private int smallest;
     private int biggest;
-    private int remainingGuesses;
+    private int remaining;
     private boolean validNumberRange = true;
 
     @Autowired
@@ -48,7 +47,7 @@ public class GameImpl implements Game {
     public void reset() {
         this.smallest =
                 this.guess = numberGenerator.getMinNumber();
-        this.remainingGuesses = guessCount;
+        this.remaining = guessCount;
         this.biggest = numberGenerator.getMaxNumber();
         this.number = numberGenerator.next();
         LOGGER.debug("Number chosen is {}", this.number);
@@ -97,7 +96,7 @@ public class GameImpl implements Game {
                 this.smallest = guess + 1; //
             }
         }
-        remainingGuesses--;
+        remaining--;
 
     }
 
@@ -112,12 +111,12 @@ public class GameImpl implements Game {
 //    public int getGuess() {
 //        return this.guess;
 //    }
-//
-//    @Override
-//    public void setGuess(int guess) {
-//        this.guess = guess;
-//    }
-//
+
+    @Override
+    public void setGuess(int guess) {
+        this.guess = guess;
+    }
+
 //    @Override
 //    public int getGuessCount() {
 //        return this.guessCount;
@@ -142,14 +141,14 @@ public class GameImpl implements Game {
 //    public boolean isValidNumberRange() {
 //        return this.validNumberRange;
 //    }
-//
-//    @Override
-//    public boolean isGameWon() {
-//        return this.guess == this.number;
-//    }
-//
-//    @Override
-//    public boolean isGameLost() {
-//        return !isGameWon() && remainingGuesses <= 0;
-//    }
+
+    @Override
+    public boolean isGameWon() {
+        return this.guess == this.number;
+    }
+
+    @Override
+    public boolean isGameLost() {
+        return !isGameWon() && remaining <= 0;
+    }
 }
