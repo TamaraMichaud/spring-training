@@ -8,13 +8,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GameConfig {
 
-    private int maxNumber = 100;
+    private int baked_potato = 100;
     private int guessCount = 4;
 
     @Bean
     @MaxNumber
     public int maxNumber(){
-        return this.maxNumber;
+        return this.baked_potato;
     }
     // ^^ this is not a getter.  the name must match the field in order for
     // @Autowired to work in NumberGeneratorImpl class where we want to use this value...
@@ -23,7 +23,7 @@ public class GameConfig {
 
     @Bean
     @GuessCount
-    public int guessCount(){
+    public int NAMESDONTMATTERguessCount(){
         return this.guessCount;
     }
 
