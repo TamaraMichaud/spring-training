@@ -15,18 +15,21 @@ public class GameImpl implements Game {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameImpl.class);
 
     // fields
-    @Autowired
-    private NumberGenerator numberGenerator;
-    // ^^ this field is now 'autowired'
-    @Autowired
-    @GuessCount
+    private final NumberGenerator numberGenerator;
     private int guessCount;
+
     private int number;
     private int guess;
     private int smallest;
     private int biggest;
     private int remainingGuesses;
     private boolean validNumberRange = true;
+
+    @Autowired
+    public GameImpl(NumberGenerator numberGenerator, @GuessCount int guessCount) {
+        this.numberGenerator = numberGenerator;
+        this.guessCount = guessCount;
+    }
 
     @PostConstruct
     @Override

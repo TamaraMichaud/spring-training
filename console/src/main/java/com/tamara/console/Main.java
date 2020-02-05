@@ -1,6 +1,7 @@
 package com.tamara.console;
 
-import com.tamara.config.AppConfig;
+import com.tamara.config.DELETE_AppConfig;
+import com.tamara.config.GameConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -18,7 +19,7 @@ public class Main {
 
         // -- Create context (container)
 //        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(CONFIG_LOCATION);
-        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(GameConfig.class);
 
         // -- Get "numberGenerator" bean from context (container)
 //        NumberGenerator numberGenerator = context.getBean("nameOfMyBean", NumberGenerator.class);
