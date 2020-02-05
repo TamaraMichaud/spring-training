@@ -100,6 +100,11 @@ public class GameImpl implements Game {
     }
 
     @Override
+    public int getGuessCount() {
+        return this.guessCount;
+    }
+
+    @Override
     public int getSmallest() {
         return this.smallest;
     }

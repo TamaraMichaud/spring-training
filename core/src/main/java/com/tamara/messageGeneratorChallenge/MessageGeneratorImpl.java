@@ -13,7 +13,6 @@ public class MessageGeneratorImpl  implements MessageGenerator {
 
     @Autowired
     private GameImpl game;
-    private int guessCount = 10;
 
     @PostConstruct
     public void shutDownMethod(){
@@ -26,7 +25,7 @@ public class MessageGeneratorImpl  implements MessageGenerator {
 
         LOGGER.info("Used method getResultMessage()");
 
-        if(game.getRemaining() == guessCount) {
+        if(game.getRemaining() == game.getGuessCount()) {
             return "Take your first guess: ";
         }
 
