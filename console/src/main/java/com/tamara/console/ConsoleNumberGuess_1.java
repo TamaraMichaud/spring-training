@@ -7,12 +7,12 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ConsoleNumberGuess implements ApplicationListener<ContextRefreshedEvent> {
+public class ConsoleNumberGuess_1 implements ApplicationListener<ContextRefreshedEvent> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ConsoleNumberGuess.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConsoleNumberGuess_1.class);
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        LOGGER.info("triggered once container is ready for use");
+        LOGGER.info("EG1: triggered once container is ready for use");
     }
 }
