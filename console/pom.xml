@@ -18,7 +18,13 @@
             <version>${project.version}</version>
 <!--            ^^ this a maven built-in for modules to save us doing "1.0-SNAPSHOT" hard-coded-->
         </dependency>
-<!--        <dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+<!--            <scope>compile</scope>-->
+<!--            ^^ added automatically by IntelliJ... don't know what scope:compile means-->
+        </dependency>
+        <!--        <dependency>-->
 <!--            <groupId>ch.qos.logback</groupId>-->
 <!--            <artifactId>logback-classic</artifactId>-->
 <!--        </dependency>-->

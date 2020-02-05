@@ -2,6 +2,7 @@ package com.tamara.console;
 
 import com.tamara.Game;
 import com.tamara.messageGeneratorChallenge.MessageGenerator;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Slf4j
 @Component
 public class ConsoleNumberGuess_2 {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ConsoleNumberGuess_2.class);
+//    private static final Logger LOGGER = LoggerFactory.getLogger(ConsoleNumberGuess_2.class);
 
     private final Game game;
     private final MessageGenerator messageGenerator;
@@ -28,7 +30,7 @@ public class ConsoleNumberGuess_2 {
     @EventListener(ContextRefreshedEvent.class)
 //    public void startMethod(ContextRefreshedEvent contextRefreshedEvent){
     public void startMethod() {
-        LOGGER.info("EG2: same as the _1 but by annotations alone");
+        log.info("EG2: same as the _1 but by annotations alone");
 
         // this is the actual game.  starts on startup...
 
