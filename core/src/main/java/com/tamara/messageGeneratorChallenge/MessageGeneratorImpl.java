@@ -1,6 +1,7 @@
 package com.tamara.messageGeneratorChallenge;
 
 import com.tamara.GameImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,24 +9,26 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+@Slf4j
 @Component
 public class MessageGeneratorImpl  implements MessageGenerator {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MessageGeneratorImpl.class);
+//    private static final Logger LOGGER = LoggerFactory.getLogger(MessageGeneratorImpl.class);
+//    ^^ using lombok @Slf4j annotation the object is called "log"
 
     @Autowired
     private GameImpl game;
 
     @PostConstruct
     public void shutDownMethod(){
-        LOGGER.info("Game object created well by autowiring? (should not be null ->): {}", this.game);
-        LOGGER.info("Starting automatically via PostConstruct");
+        log.info("Game object created well by autowiring? (should not be null ->): {}", this.game);
+        log.info("Starting automatically via PostConstruct");
     }
 
     @Override
     public String getResultMessage() {
 
-        LOGGER.info("Used method getResultMessage()");
+        log.info("Used method getResultMessage()");
 
         if(game.getRemaining() == game.getGuessCount()) {
             return "Take your first guess: ";

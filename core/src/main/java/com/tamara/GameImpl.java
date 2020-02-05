@@ -1,5 +1,9 @@
 package com.tamara;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +12,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+@Data
 @Component
 public class GameImpl implements Game {
 
@@ -15,8 +20,15 @@ public class GameImpl implements Game {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameImpl.class);
 
     // fields
+    @Getter(AccessLevel.NONE)
     private final NumberGenerator numberGenerator;
     private int guessCount;
+
+    // vv these three with lombok annotations instead of all the commented
+    //     getters and setters down below...
+    private boolean gameWon;
+    private int remaining;
+    private boolean gameLost;
 
     private int number;
     private int guess;
@@ -89,53 +101,55 @@ public class GameImpl implements Game {
 
     }
 
-    @Override
-    public int getNumber() {
-        return this.number;
-    }
 
-    @Override
-    public int getGuess() {
-        return this.guess;
-    }
-
-    @Override
-    public void setGuess(int guess) {
-        this.guess = guess;
-    }
-
-    @Override
-    public int getGuessCount() {
-        return this.guessCount;
-    }
-
-    @Override
-    public int getSmallest() {
-        return this.smallest;
-    }
-
-    @Override
-    public int getBiggest() {
-        return this.biggest;
-    }
-
-    @Override
-    public int getRemaining() {
-        return this.remainingGuesses;
-    }
-
-    @Override
-    public boolean isValidNumberRange() {
-        return this.validNumberRange;
-    }
-
-    @Override
-    public boolean isGameWon() {
-        return this.guess == this.number;
-    }
-
-    @Override
-    public boolean isGameLost() {
-        return !isGameWon() && remainingGuesses <= 0;
-    }
+// replaced with lombok annotations
+//    @Override
+//    public int getNumber() {
+//        return this.number;
+//    }
+//
+//    @Override
+//    public int getGuess() {
+//        return this.guess;
+//    }
+//
+//    @Override
+//    public void setGuess(int guess) {
+//        this.guess = guess;
+//    }
+//
+//    @Override
+//    public int getGuessCount() {
+//        return this.guessCount;
+//    }
+//
+//    @Override
+//    public int getSmallest() {
+//        return this.smallest;
+//    }
+//
+//    @Override
+//    public int getBiggest() {
+//        return this.biggest;
+//    }
+//
+//    @Override
+//    public int getRemaining() {
+//        return this.remainingGuesses;
+//    }
+//
+//    @Override
+//    public boolean isValidNumberRange() {
+//        return this.validNumberRange;
+//    }
+//
+//    @Override
+//    public boolean isGameWon() {
+//        return this.guess == this.number;
+//    }
+//
+//    @Override
+//    public boolean isGameLost() {
+//        return !isGameWon() && remainingGuesses <= 0;
+//    }
 }
