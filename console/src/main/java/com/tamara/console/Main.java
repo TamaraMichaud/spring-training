@@ -1,9 +1,6 @@
 package com.tamara.console;
 
-import com.tamara.AppConfig;
-import com.tamara.Game;
-import com.tamara.NumberGenerator;
-import com.tamara.messageGeneratorChallenge.MessageGenerator;
+import com.tamara.config.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;

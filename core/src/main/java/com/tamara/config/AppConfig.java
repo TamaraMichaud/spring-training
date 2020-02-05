@@ -1,13 +1,20 @@
-package com.tamara;
+package com.tamara.config;
 
 
+import com.tamara.Game;
+import com.tamara.GameImpl;
+import com.tamara.NumberGenerator;
+import com.tamara.NumberGeneratorImpl;
 import com.tamara.messageGeneratorChallenge.MessageGenerator;
 import com.tamara.messageGeneratorChallenge.MessageGeneratorImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @Configuration
+@Import(GameConfig.class)
+// ^^ AppConfig can control all of the config
 @ComponentScan(basePackages = "com.tamara")
 public class AppConfig {
 
