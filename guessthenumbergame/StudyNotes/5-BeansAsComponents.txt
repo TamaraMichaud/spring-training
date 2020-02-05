@@ -1,0 +1,16 @@
+** Stereotype annotations:
+@Component -> generic stereotype for any spring-managed component
+
+@Repository, @Service and @Controller -> specialisations of @Component for more specific use cases.
+e.g. in the  persistence, service and presentation layers respectively.
+
+** these tags are applied to the implementation of classes, not to interfaces etc.
+this is because we want to keep interfaces decoupled from their implementations,
+and therefore want only the implementations to be dependent on the spring framework
+
+
+@Configuration
+- is processed as a @Component...
+
+
+@Bean methods; see AppConfig.java -> these examples are overly simplistic

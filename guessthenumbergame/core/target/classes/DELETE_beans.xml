@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+<!--    ^^ rather than "init-method" per bean, we could, if we wanted, add another attribute in this block that-->
+<!--    standardises them all to use the same name; i.e. rest:    default-init-method="reset"-->
+
+
+<!--    <context:annotation-config/>-->
+<!--    // ^^ this tag requires the above xlmns:context= line (auto-populated by intelliJ)-->
+<!--    // ^^ it also now produces a line in the logs confirming a large number of beans... (currently 2 are defined below, but my logs say 7)-->
+<!--// ^^ superceded by the below component-scan line-->
+
+<!--    // enabling component scanning-->
+    <context:component-scan base-package="com.tamara"/>
+<!--    // ^^ implicitly includes annotation-config.  still requires the extra xlmns:context value we got from that line previously-->
+<!--    ^^ this line means that we no longer need to explicitly declare beans in here. the container will scan the project classes-->
+<!--    for component annotations-->
+
+
+<!--    // ** this file is no longer in use - see class "AppConfig" for the annotations relating to the only remaining live code:-->
+<!--    componant-scan / base-package-->
+
+
+
+
+
+<!--    <bean id="numberGenerator" class="com.tamara.NumberGeneratorImpl"/>-->
+    <!--    ^^ id and name is not usually Required, if not provided,
+        the container will generate a unique name automatically -->
+
+
+<!--    <bean id="game" class="com.tamara.GameImpl">-->
+<!--        <constructor-arg ref="numberGenerator"/>-->
+<!--&lt;!&ndash;        this is because this class has a constructor which requires an object&ndash;&gt;-->
+<!--&lt;!&ndash;        the object needs to be another bean, which is true here&ndash;&gt;-->
+<!--    </bean>-->
+<!--^^ CONSTRUCTOR-BASED DEPENDENCY INJECTION - see commented code in class for full flow ALT1 -->
+
+<!--    <bean id="game" class="com.tamara.GameImpl" init-method="reset">-->
+                                                 <!-- ^^example of xml lifecycle callback... not best practice. requires that
+                                                      a reset() method exists in this class. requires no standardisation,
+                                                       the next one may be called potato() etc.  -->
+<!--    <bean id="game" class="com.tamara.GameImpl">-->
+<!--        // vv this is now redundant, using @Autowired instead-->
+<!--        <property name="numberGenerator" ref="numberGenerator"/>-->
+<!--                  ^^ NAME must match the name of the field in the class rather than any other bean-->
+<!--                  ^^ REF must match the name of the bean for this object-->
+<!--                    (in this case they happen to be the same)-->
+
+<!--        ^^ in this example, NumberGenerator is a class.  but if we had simply an "int" - we would not use "ref=" but rather-->
+<!--        "value=" and offer a "safe" default value (probably).  Spring will convert "1" to an actual int automatically -->
+
+<!--    </bean>-->
+<!--    ^^ SETTER-BASED DEPENDENCY INJECTION - see commented code in class for full flow ALT2 -->
+
+
+<!--    // vv this is for the post-construct / pre-destroy (deprecated) annotations.  now sorted by: "<context:annotation-config/>"-->
+<!--    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->
+
+
+
+</beans>

@@ -1,0 +1,20 @@
+* ApplicationContext parent = ApplicationEventPublisher
+    which handles event publication functionality
+* Event handling in the ApplicationContext is managed by the
+    ApplicationEvent class and ApplicationListener interface
+* Beans deployed to the container which implement the
+    ApplicationListener interface will receive a notification
+    every time an ApplicationEvent is published to the container
+^^ standard Observer design pattern
+
+
+Example 1;  see module Console, class ConsoleNumberGuess_1;
+ "implements ApplicationListener" and "@Override" only
+(this class is in a separate module than the actual container so make sure AppConfig has @ComponentScan declared,
+ and this class is in an appropriately-named package)
+
+Example 2; see module Console, class ConsoleNumberGuess_2;
+ without "implements... ", but direct annotations instead
+ NB: @EventListener(EventClassName.class) // << or @EventListener \npublic void x(EventClass){...
+
+

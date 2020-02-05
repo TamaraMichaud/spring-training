@@ -1,0 +1,7 @@
+com\tamara\Game.class
+com\tamara\AppConfig.class
+com\tamara\NumberGenerator.class
+com\tamara\messageGeneratorChallenge\MessageGeneratorImpl.class
+com\tamara\NumberGeneratorImpl.class
+com\tamara\GameImpl.class
+com\tamara\messageGeneratorChallenge\MessageGenerator.class

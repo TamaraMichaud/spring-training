@@ -1,0 +1,14 @@
+in the beans.xml bean definitions we can set, either globally or per bean; init- and destruct- methods
+however, it is generally considered to be best practice to use the JSR250 post-construct and pre-destroy annotations
+
+we do this by declaring a bean with the common annotation bean-post-processor.
+
+(we can add an init-method="x" property to each <bean> tag, or globally in <beans> .... but no.)
+
+** this is done with a post-processor-specific bean and a new dependency in the pom.xml
+bean: <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+pom: javax.annotation-api  (this goes in the parent pom for multi-module, then in each pom that needs it)
+
+-- which now allows us to add the tag directly to our .java class;    @PostConstruct
+
+// ^^ deprecated for Java versions 9 & 10... fine for 11+
