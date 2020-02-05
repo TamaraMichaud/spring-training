@@ -17,7 +17,7 @@ public class Main {
 // ^^ no longer used.  see AppConfig instead
 
     public static void main(String[] args) {
-        LOGGER.warn("BE CAREFUL!!");
+//        LOGGER.warn("BE CAREFUL!!");
 
         // -- Create context (container)
 //        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(CONFIG_LOCATION);
@@ -25,7 +25,7 @@ public class Main {
 
         // -- Get "numberGenerator" bean from context (container)
 //        NumberGenerator numberGenerator = context.getBean("nameOfMyBean", NumberGenerator.class);
-        NumberGenerator numberGenerator = context.getBean(NumberGenerator.class); // << trashed the name part since it's a bit shit
+//        NumberGenerator numberGenerator = context.getBean(NumberGenerator.class); // << trashed the name part since it's a bit shit
         // ^^ we can have this aimed at the interface because there is only one implementation of this class... however if there were
         // multiple we'd need to use qualifiers... (later in course)
 
@@ -33,12 +33,12 @@ public class Main {
             numberGeneratorIMPL -> the implementation.*/
 
         // -- Call a method from the object retreived from container
-        int number = numberGenerator.next();
-            LOGGER.info("got generated number of: {}", number);
+//        int number = numberGenerator.next();
+//            LOGGER.debug("got generated number of: {}", number);
             // ^^ this curly-brace variable transposition is a feature of LOGBACK logger... noice!
 
         // -- Get "Game" bean from context (containter)
-        Game game = context.getBean(Game.class);
+//        Game game = context.getBean(Game.class);
             /* ^^ this time we call getBean() with only the .class value compared to at :21, same-same*/
 
         // -- Call a method from Game (start the game...)
@@ -47,8 +47,8 @@ public class Main {
         // ^^ and any "close" calls...   see "BeanLifecycleCallbacks.txt" & @PostConstruct / @PreDestroy tags in game class.
 
 
-        MessageGenerator yoMama = context.getBean(MessageGenerator.class);
-        LOGGER.debug(yoMama.getResultMessage());
+//        MessageGenerator yoMama = context.getBean(MessageGenerator.class);
+//        LOGGER.debug(yoMama.getResultMessage());
 
 
 
