@@ -19,18 +19,18 @@ import org.springframework.context.annotation.Import;
 public class AppConfig {
 
     //   -- bean methods --  (by default, beans are named the same as their class... you can override this but not recommended)
-    @Bean
-    public NumberGenerator numberGenerator() {
-        return new NumberGeneratorImpl();
-    }
-
-    @Bean
-    public Game game() {
-        return new GameImpl();
-    }
-
-    @Bean
-    public MessageGenerator messageGenerator() {
-        return new MessageGeneratorImpl();
-    }
+//    @Bean
+//    public NumberGenerator numberGenerator() {
+//        return new NumberGeneratorImpl();
+//    }
+//
+//    @Bean
+//    public Game game() {
+//        return new GameImpl();
+//    }
+//
+//    @Bean
+//    public MessageGenerator messageGenerator() {
+//        return new MessageGeneratorImpl();
+//    }
 }
