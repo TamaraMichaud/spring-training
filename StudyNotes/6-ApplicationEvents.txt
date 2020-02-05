@@ -15,6 +15,6 @@ Example 1;  see module Console, class ConsoleNumberGuess_1;
 
 Example 2; see module Console, class ConsoleNumberGuess_2;
  without "implements... ", but direct annotations instead
- NB: @EventListener methods MUST take an event as the argument
+ NB: @EventListener(EventClassName.class) // << or @EventListener \npublic void x(EventClass){...
 
 
