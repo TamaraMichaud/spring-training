@@ -16,10 +16,14 @@ public class ConsoleNumberGuess_2 {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ConsoleNumberGuess_2.class);
 
+    private final Game game;
+    private final MessageGenerator messageGenerator;
+
     @Autowired
-    private Game game;
-    @Autowired
-    private MessageGenerator messageGenerator;
+    public ConsoleNumberGuess_2(Game game, MessageGenerator messageGenerator) {
+        this.game = game;
+        this.messageGenerator = messageGenerator;
+    }
 
     @EventListener(ContextRefreshedEvent.class)
 //    public void startMethod(ContextRefreshedEvent contextRefreshedEvent){
