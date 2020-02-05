@@ -35,14 +35,15 @@ public class MessageGeneratorImpl  implements MessageGenerator {
         }
 
         if(game.isGameWon()) {
-            return "WOOP!! Congratulations!";
+            return "Congratulations!!  You guessed right, it was " + game.getNumber();
         }
+        String guessAgain = "Nope, go ";
         if(game.getGuess() < game.getNumber()) {
-            return "Nope, go higher...";
+            guessAgain += "higher...";
         } else {
-            return "Nope, go lower...";
+            guessAgain += "lower... ";
         }
-
+        return guessAgain + String.format("  [You have %d guesses left]", game.getRemaining());
     }
 
     @Override
