@@ -2,6 +2,7 @@ package com.tamara.config;
 
 import com.tamara.GuessCount;
 import com.tamara.MaxNumber;
+import com.tamara.MinNumber;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,9 @@ public class GameConfig {
     @Value("${game.maxNumber:20}")
     private int maxNumber;
 
+    @Value("${game.minNumber:1}")
+    private int minNumber;
+
     @Value("${game.guessCount:5}")
     // ^^ variable as labelled in file, :x == default value if not found
     private int guessCount;
@@ -23,6 +27,12 @@ public class GameConfig {
     @MaxNumber
     public int maxNumber(){
         return this.maxNumber;
+    }
+
+    @Bean
+    @MinNumber
+    public int minNumber(){
+        return this.minNumber;
     }
 
     @Bean

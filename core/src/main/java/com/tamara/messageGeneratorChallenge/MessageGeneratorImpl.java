@@ -47,7 +47,8 @@ public class MessageGeneratorImpl  implements MessageGenerator {
 
     @Override
     public String getMainMessage() {
-        return "--- Welcome!  How to play... guess a number between 0 and " + game.getBiggest() + "! --- ";
+        return "--- Welcome!  How to play... guess a number between " + game.getSmallest()
+                + " and " + game.getBiggest() + "! --- ";
     }
 
 }

@@ -31,8 +31,8 @@ public class GameImpl implements Game {
     @PostConstruct
     @Override
     public void reset() {
-        this.smallest = 0;
-        this.guess = 0;
+        this.smallest =
+                this.guess = numberGenerator.getMinNumber();
         this.remainingGuesses = guessCount;
         this.biggest = numberGenerator.getMaxNumber();
         this.number = numberGenerator.next();
