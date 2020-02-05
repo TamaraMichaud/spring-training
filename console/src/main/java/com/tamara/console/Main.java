@@ -1,6 +1,6 @@
 package com.tamara.console;
 
-import com.tamara.config.DELETE_AppConfig;
+//import com.tamara.config.DELETE_AppConfig;
 import com.tamara.config.GameConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
