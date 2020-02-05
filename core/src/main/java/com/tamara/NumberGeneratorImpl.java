@@ -22,7 +22,10 @@ public class NumberGeneratorImpl implements NumberGenerator {
 //    public methods
     @Override
     public int next() {
-        return random.nextInt(maxNumber);
+//        return random.nextInt(maxNumber);
+//        e.g. min = 5, max = 20; we want a random number between the two not just below the max
+//        20 - 5 = 15; numbers between 0-15 -> + 5; gives 5 - 20
+        return random.nextInt((maxNumber - minNumber)) + minNumber;
     }
 
     @Override
