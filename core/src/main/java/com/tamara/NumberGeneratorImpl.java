@@ -11,15 +11,21 @@ public class NumberGeneratorImpl implements NumberGenerator {
 
 //    fields
     private final Random random = new Random();
-    @Autowired
-    @MaxNumber
-    private int maxNumber;
+//    @Autowired
+//    @MaxNumber
+    private final int maxNumber; // << "final" is good practice with constructor injection
+
+//    @Autowired
+//    @MinNumber
+    private final int minNumber;
 
     @Autowired
-    @MinNumber
-    private int minNumber;
+    public NumberGeneratorImpl(@MaxNumber int maxNumber, @MinNumber int minNumber) {
+        this.maxNumber = maxNumber;
+        this.minNumber = minNumber;
+    }
 
-//    public methods
+    //    public methods
     @Override
     public int next() {
 //        return random.nextInt(maxNumber);
