@@ -21,8 +21,6 @@ public class MessageGeneratorImpl  implements MessageGenerator {
         LOGGER.info("Starting automatically via PostConstruct");
     }
 
-
-
     @Override
     public String getResultMessage() {
 
@@ -36,12 +34,20 @@ public class MessageGeneratorImpl  implements MessageGenerator {
             return "Not a valid number...";
         }
 
-        return (game.isGameWon()) ? "Woop yeah!" : "Pah-ha, no mate..." + " Number was " + game.getNumber();
+        if(game.isGameWon()) {
+            return "WOOP!! Congratulations!";
+        }
+        if(game.getGuess() < game.getNumber()) {
+            return "Nope, go higher...";
+        } else {
+            return "Nope, go lower...";
+        }
+
     }
 
     @Override
     public String getMainMessage() {
-        return "MAIN MESSAGE";
+        return "--- Welcome!  How to play... guess a number silly! --- ";
     }
 
 }
