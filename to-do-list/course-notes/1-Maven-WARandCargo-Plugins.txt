@@ -1,0 +1,17 @@
+Maven WAR plugin
+war contains web-app related resources
+    builds project with "webapp/WEB-INF/web.xml" dirs/files
+    web.xml can be replicated with annotations instead
+(jar contains regular java resources)
+
+WEB-INF/ contents cannot be simply publicised to the client by the container.
+  however the servlet itself can access/process these files and serve up the contents
+  usually .jsp/html templates/css etc
+(java server pages)
+
+
+
+Maven Cargo plugin
+-> once added to the pom you will see in your Maven toolbar that you have many potential actions.
+    ->cargo:run is the main one we want to use
+the url to visit will be as configured in the project (i.e. for this one; "localhost:8080/to-do-list/index.html"

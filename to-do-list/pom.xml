@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.tamara</groupId>
+    <artifactId>to-do-list</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <logback-version>1.2.3</logback-version>
+        <spring-version>5.2.2.RELEASE</spring-version>
+        <spring-mvc-version>5.2.3.RELEASE</spring-mvc-version>
+        <maven-version>3.8.1</maven-version>
+        <java-version>11</java-version>
+        <annotation-version>1.3.2</annotation-version>
+        <lombok-version>1.18.10</lombok-version>
+    </properties>
+
+
+    <dependencies>
+
+        <!--            logging-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-version}</version>
+            <!--            <scope>test</scope>-->
+        </dependency>
+
+        <!--            spring context (aka container)-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-context</artifactId>-->
+<!--            <version>${spring-version}</version>-->
+
+<!--        </dependency>-->
+<!--        // ^^ don't need this when using webmvc (?)-->
+
+        <!--            spring web mvc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring-mvc-version}</version>
+
+        </dependency>
+
+        <!--            annotation-->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>${annotation-version}</version>
+        </dependency>
+
+        <!--            lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok-version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <!--                maven auto-compiles to java version 5... we must force it to use the correct one-->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-version}</version>
+                <configuration>
+                    <target>${java-version}</target>
+                    <source>${java-version}</source>
+                    <release>${java-version}</release>
+                </configuration>
+
+            </plugin>
+<!--            VV this allows us to package the project into a war-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.3</version>
+<!--                ^^ not using a property for this version because plugins generally update less often-->
+<!--                ^^ this alone will not work without a web.xml - which we are not creating... so:-->
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+<!--            VV this contains embedded tomcat to save using plugins etc-->
+<!--            you should see "cargo" in the Plugins in the maven toolbar-->
+<!--you can expand this item to see all the possible actions.  "cargo:run" is the main one we want-->
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.7.10</version>
+                <!--                <version>3.2.3</version>-->
+<!--                ^^ not using a property for this version because plugins generally update less often-->
+<!--                ^^ this alone will not work without a web.xml - which we are not creating... so:-->
+                <configuration>
+                    <container>
+                        <containerId>tomcat9x</containerId>
+                        <type>embedded</type>
+                    </container>
+                </configuration>
+            </plugin>
+
+
+        </plugins>
+    </build>
+
+</project>
