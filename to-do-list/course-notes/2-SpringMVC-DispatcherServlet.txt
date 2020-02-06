@@ -1,0 +1,1 @@
+this is the alternative to a web.xml
