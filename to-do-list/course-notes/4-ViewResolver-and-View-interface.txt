@@ -1,0 +1,19 @@
+allows us to render models in a browser without forcing us to use specific view technology
+
+- ViewResolver -> provides mapping between view names and actual views
+    e.g. we could use jsp, thymeleaf etc...
+
+- JavaServer Pages Standard Tag Library (JSTL) is a component of Java EE and extends the JSP specs by adding a library
+    of JSP annotations for common tasks like loops etc
+
+
+(see WebConfig)
+@Bean
+public ViewResolver viewResolver(){
+    // create an internal resource view resolver
+    UrlBasedViewResolver viewResolver = new InternalResourceViewResolver();
+    // ^^ latter == subclass of former. automatically handles JSTL (jsp tags)
+    viewResolver.setPrefix(RESOLVER_PREFIX);
+    viewResolver.setSuffix(RESOLVER_SUFFIX);
+
+    return viewResolver;

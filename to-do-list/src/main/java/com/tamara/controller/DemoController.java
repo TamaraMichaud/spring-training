@@ -23,4 +23,14 @@ public class DemoController {
         return "'Ello 'Ello!"; // << with the @ResponseBody tags we can make this work without any ViewResolver...
     }
 
+    @GetMapping("welcome")
+    // ^^ no leading '/'... not required in fact
+    // ^^ not using ResponseBody but View instead
+    public String ciao(){
+
+        return "firstView";
+        // ^^ this is the filename of the view we want to display
+        // (minus prefix and suffix specified in the DemoController viewResolver)
+    }
+
 }
