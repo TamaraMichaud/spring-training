@@ -1,0 +1,14 @@
+
+All of the following points are handled by the
+    <dispatcher servlet receives request>  ** [created in WebAppInitializer.java]
+
+1.  REQUEST from client (browser) received by servlet
+2.  servlet uses Handler Mapping to determine the class/method to execute to handle the request  ** eg DemoController class
+3.  this is returned to the dispatcher servlet
+4.  servlet then calls the specific handler method
+5.  this returns the model and view name  (not handled a model yet in the course but view eg "welcome/firstView"
+6.  finds the viewResolver and calls it with the logical view name              ** eg WebConfig viewResolver()
+7.  this uses prefix and suffix to return the physical file
+8.  dispatcher servlet executes the file and makes the model available to the view
+9.  view is rendered and returns the content back to the dispatcher servlet
+10. servlet sends that content back to the client (browser)
