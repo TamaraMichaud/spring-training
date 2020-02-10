@@ -1,0 +1,6 @@
+Models are exposed to views so that they can be accessed by the jsp
+
+Spring models are effectively hash-maps
+Attributes added to a model are then available to the view
+
+see DemoController "bonjour()" and "viewWithModel.jsp" -> model attributes can be directly accessed with simply ${attrib}

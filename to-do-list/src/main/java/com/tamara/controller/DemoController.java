@@ -1,9 +1,13 @@
 package com.tamara.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+@Slf4j
 @Controller
 // ^^ specialisation of the @Component tag for servlet-related functionality
 public class DemoController {
@@ -31,6 +35,30 @@ public class DemoController {
         return "firstView";
         // ^^ this is the filename of the view we want to display
         // (minus prefix and suffix specified in the DemoController viewResolver)
+    }
+
+
+
+    // using a model
+    @GetMapping("aloha")
+    public String bonjour(Model model){
+
+        log.debug("MODEL TIME!!");
+        model.addAttribute("user", "mich");
+
+
+        return "viewWithModel";
+        // ^^ this is the filename of the view we want to display
+        // (minus prefix and suffix specified in the DemoController viewResolver)
+    }
+
+
+    // can simply "model.addAttribute", or as below
+    @ModelAttribute("message")
+    // ^^ if no name specified, Spring will lower-case the first word of your return value...
+    public String welcomeMessage(){
+        log.debug("welcomeMessage() called");
+        return "Welcome to my demo application!";
     }
 
 }
