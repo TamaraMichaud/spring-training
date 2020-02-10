@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Slf4j
@@ -30,11 +31,13 @@ public class DemoController {
     }
 
     @GetMapping("demo-service")
-    public String heyService(Model model){
+    public String heyService(@RequestParam String user, @RequestParam int age, Model model){
+        // ^^ now we must do:  xx/demo-service?user=yy
 
-        model.addAttribute("user", demoService.getHelloMessage("tamara"));
+        model.addAttribute("user", demoService.getHelloMessage(user));
+        model.addAttribute("age", age);
         model.addAttribute("message", demoService.getWelcomeMessage());
-        return "viewWithModel";
+        return "usingDemoService";
     }
     // ^^ these methods/fields all relating to "demoService" are the better version of the below
 
