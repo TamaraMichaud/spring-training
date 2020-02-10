@@ -1,6 +1,8 @@
 package com.tamara.controller;
 
+import com.tamara.service.DemoServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,28 @@ public class DemoController {
     // that the startup servlet will be "/" -> but we need a controller in order to actually handle the
     // requests to and from this servlet.
     // (nb /index.html was also rejected...)
+
+
+//    @Autowired
+    private final DemoServiceImpl demoService;
+
+    @Autowired
+    // ^^ this can be here or above; only because we have a single object... if there were more:  here is best
+    public DemoController(DemoServiceImpl demoService) {
+        this.demoService = demoService;
+    }
+
+    @GetMapping("demo-service")
+    public String heyService(Model model){
+
+        model.addAttribute("user", demoService.getHelloMessage("tamara"));
+        model.addAttribute("message", demoService.getWelcomeMessage());
+        return "viewWithModel";
+    }
+    // ^^ these methods/fields all relating to "demoService" are the better version of the below
+
+
+
 
     @ResponseBody
     // ^^ indicates that the results of the method will be the response body, which allows our "return" value to be printed

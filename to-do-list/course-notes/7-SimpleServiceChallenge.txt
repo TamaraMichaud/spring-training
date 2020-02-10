@@ -1,0 +1,5 @@
+- create an interface "DemoService" with (String) getHelloMessage(String user) and getWelcomeMessage()
+- create @Service DemoServiceImpl
+
+@Service -> stereotype annotation for the Service layer (like @Controller for controller etc)
+    -> handles the business logic; performs calculations data or processes data
