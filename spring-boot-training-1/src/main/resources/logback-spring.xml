@@ -1,0 +1,33 @@
+<configuration>
+    <!--first search is for file "logback-test.xml", then "logback.groovy", then this file, then just uses it's basic defaults-->
+<!--    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">-->
+<!--        &lt;!&ndash;    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">&ndash;&gt;-->
+<!--        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--            &lt;!&ndash;        <layout class="ch.qos.logback.classic.PatternLayout">&ndash;&gt;-->
+<!--            <pattern>-->
+<!--                %date [%t] [%-5level] %logger{36} - %message%n-->
+<!--            </pattern>-->
+<!--            &lt;!&ndash;                ^^ -5level == left-justified 5-chars padded.  no minus makes it right-aligned&ndash;&gt;-->
+<!--            &lt;!&ndash;                ^^ {36} == max-length of string. truncated if longer than this&ndash;&gt;-->
+<!--            &lt;!&ndash;                ^^ truncated from the left thankfully! you can exclude the {x} to just have "max"&ndash;&gt;-->
+<!--            &lt;!&ndash;                (google logback conversionWord)&ndash;&gt;-->
+<!--            &lt;!&ndash;        </layout>&ndash;&gt;-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+<!--^^ not required; we will use the default config for Spring to handle things-->
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+<!--^^ you can find this file in External Libraries -> org.springframework.boot:spring-boot -> (expand all and find) logging -> logback -> base.xml-->
+<!--    ^^ it has "included" tags which allows us to then "include" it later.  it also "includes" other .xml files in this lib-->
+
+    <logger name="com.tamara" level="debug"/>
+    <logger name="org.springframework" level="debug" />
+
+
+<!--    <root level="error">-->
+<!--        <appender-ref ref="CONSOLE"/>-->
+<!--    </root>-->
+    <!--^^ not required; we will use the default config for Spring to handle things-->
+
+</configuration>
