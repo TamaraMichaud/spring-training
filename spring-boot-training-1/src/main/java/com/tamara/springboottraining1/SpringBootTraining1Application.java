@@ -11,3 +11,7 @@ public class SpringBootTraining1Application {
 	}
 
 }
+
+
+// ^^ we have put this class in the root package so that it will scan all classes in this and sub-packages
+// ^^ if we moved it elsewhere we might have issues
