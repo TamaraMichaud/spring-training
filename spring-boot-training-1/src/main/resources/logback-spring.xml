@@ -22,7 +22,7 @@
 <!--    ^^ it has "included" tags which allows us to then "include" it later.  it also "includes" other .xml files in this lib-->
 
     <logger name="com.tamara" level="debug"/>
-    <logger name="org.springframework" level="debug" />
+    <logger name="org.springframework" level="DEBUG" />
 
 
 <!--    <root level="error">-->
