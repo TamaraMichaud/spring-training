@@ -13,7 +13,7 @@ import java.util.*;
 public class FileTransformer {
 
 
-    public void scanFile(RawFile rawFile, TransformColumns transformColumns, FileWriter_test fileWriter) throws IOException {
+    public void scanFile(RawFile rawFile, TransformColumns transformColumns, FileWriter fileWriter) throws IOException {
 
         log.debug("started...");
 

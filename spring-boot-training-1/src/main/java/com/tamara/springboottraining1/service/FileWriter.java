@@ -14,7 +14,7 @@ import java.nio.channels.FileChannel;
 import java.util.List;
 
 @Configuration
-public class FileWriter_test {
+public class FileWriter {
 
     public void printLine(List<String> line) throws IOException {
 

@@ -2,9 +2,8 @@ package com.tamara.springboottraining1.controller;
 
 import com.tamara.springboottraining1.model.RawFile;
 import com.tamara.springboottraining1.service.FileTransformer;
-import com.tamara.springboottraining1.service.FileWriter_test;
+import com.tamara.springboottraining1.service.FileWriter;
 import com.tamara.springboottraining1.service.TransformColumns;
-import com.tamara.springboottraining1.service.TransformColumnsImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -27,7 +26,7 @@ public class DemoController {
     @Autowired
     TransformColumns transformColumns;
     @Autowired
-    FileWriter_test fileWriter;
+    FileWriter fileWriter;
 
 
     @ResponseBody

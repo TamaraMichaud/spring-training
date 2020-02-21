@@ -6,7 +6,7 @@ package com.tamara.springboottraining1.model;
 
 
 //@Entity
-public class RawFileRecord {
+public class WIP_RawFileRecord {
 
     private String head1;
     private String head2;

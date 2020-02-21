@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableBatchProcessing
-public class BatchConfiguration_Test {
+public class WIP_BatchConfiguration_Test {
 
     @Autowired
     public JobBuilderFactory jobBuilderFactory;
