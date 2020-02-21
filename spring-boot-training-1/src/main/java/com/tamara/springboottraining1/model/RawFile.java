@@ -13,17 +13,17 @@ import java.io.File;
 public class RawFile {
 
     private final File name;
-    private final String separator;
+    private final String delimiter;
     private final String encoding;
     private final boolean hasHeader;
 
     public RawFile(@Value("${file.name}") String name,
-                   @Value("${file.separator}") String separator,
+                   @Value("${file.delimiter}") String delimiter,
                    @Value("${file.encoding}") String encoding,
                    @Value("${file.hasHeader}") boolean hasHeader) {
 
         this.name = new File(name);
-        this.separator = separator;
+        this.delimiter = delimiter;
         this.hasHeader = hasHeader;
         this.encoding = encoding;
     }

@@ -1,5 +1,6 @@
 package com.tamara.springboottraining1.service;
 
+import com.tamara.springboottraining1.Delimiters;
 import com.tamara.springboottraining1.model.RawFile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
@@ -21,9 +22,31 @@ public class FileTransformer {
         Scanner sc = null;
         try {
             inputStream = new FileInputStream(rawFile.getName());
+            String fileSeparator = rawFile.getDelimiter();
+
+            // new class
+//            Delimiters finalDelim = Delimiters.FINAL;
+//            Delimiters rawDelim = Delimiters.valueOf(rawFile.getDelimiter());
+//            if(rawDelim.equals(finalDelim)) {
+//                log.info("File has correct delimiter");
+//            } else
+//            {
+//                log.debug("File has delimiter: " + rawDelim);
+//                //TODO: change the delimiter in the file...
+//            }
+
+
+
+
+
+
+
             sc = new Scanner(inputStream, rawFile.getEncoding());
+//            sc = new Scanner(inputStream, rawFile.getEncoding()).useDelimiter(";"); // same as above (?)
             while (sc.hasNextLine()) {
-                String[] line = sc.nextLine().split(rawFile.getSeparator());
+
+                String[] line = sc.nextLine().split(fileSeparator);
+//                String line = sc.nextLine();
 
                 System.out.println("Let's treat this line somehow... it has:");
                 System.out.println(line);

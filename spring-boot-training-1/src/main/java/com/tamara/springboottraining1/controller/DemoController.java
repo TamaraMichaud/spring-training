@@ -4,7 +4,7 @@ import com.tamara.springboottraining1.model.RawFile;
 import com.tamara.springboottraining1.service.FileTransformer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.quartz.QuartzDataSource;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,9 +39,9 @@ public class DemoController {
     }
 
 
-    @GetMapping("test-file-read")
-//    @QuartzDataSource()
-    public String cronJobNotReally() {
+    @Scheduled(fixedRate = 30000) // 30secs
+    //@Scheduled(cron = "00 08 10 * * *")
+    public String cronJob() {
         log.info("let's try and read a file...");
 
         try {
