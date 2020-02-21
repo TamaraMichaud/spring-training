@@ -6,15 +6,17 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+import static com.tamara.springboottraining1.Constants.FILE_COLUMNS_TODELETE;
+
 @Slf4j
 @Configuration
 public class TransformColumnsImpl implements TransformColumns {
 
-    private final RawFile rawFile;
-
-    public TransformColumnsImpl(RawFile rawFile) {
-        this.rawFile = rawFile;
-    }
+//    private final RawFile rawFile;
+//
+//    public TransformColumnsImpl(RawFile rawFile) {
+//        this.rawFile = rawFile;
+//    }
 
     @Override
     public void orderBy() {
@@ -24,7 +26,7 @@ public class TransformColumnsImpl implements TransformColumns {
     @Override
     public void deleteByIndex(List<String> line) {
 
-        int[] idxToDelete = rawFile.getColumnsToDelete();
+        int[] idxToDelete = FILE_COLUMNS_TODELETE; //rawFile.getColumnsToDelete();
         log.debug(String.format("Removing %d columns from record", idxToDelete.length));
 
         for (int idx = idxToDelete.length - 1; idx >= 0; idx--) {

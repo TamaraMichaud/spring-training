@@ -46,6 +46,7 @@ public class DemoController {
     }
 
 
+
     @Scheduled(fixedRate = 30000) // 30secs
     //@Scheduled(cron = "00 08 10 * * *")
     public String cronJob() {

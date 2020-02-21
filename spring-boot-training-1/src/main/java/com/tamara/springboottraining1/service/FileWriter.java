@@ -13,6 +13,8 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.List;
 
+import static com.tamara.springboottraining1.Constants.FILENAME_FINAL;
+
 @Configuration
 public class FileWriter {
 
@@ -26,7 +28,7 @@ public class FileWriter {
 
         System.out.println("Printing formatted line: '" + formattedLine + "'");
 
-        RandomAccessFile stream = new RandomAccessFile("./src/main/resources/ProcessedFile.txt", "rw");
+        RandomAccessFile stream = new RandomAccessFile(FILENAME_FINAL, "rw");
         //TODO: ^^ parameterize path
         //TODO: check file doesn't already exist: overwrite if yes or throw error? [parameterize based on client preference...]
 

@@ -18,12 +18,50 @@
 		<java.version>11</java.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>repo.releases</id>
+			<name>Citobi Internal Releases</name>
+			<url>http://repo.server.citobi.be/archiva/repository/internal/</url>
+		</repository>
+		<repository>
+			<id>repo.snapshots</id>
+			<name>Citobi Internal Snapshots</name>
+			<url>http://repo.intranet.citobi.be/archiva/repository/snapshots/</url>
+		</repository>
+	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>repo.releases</id>
+			<name>Citobi Internal Releases</name>
+			<url>http://repo.server.citobi.be/archiva/repository/internal/</url>
+		</repository>
+		<snapshotRepository>
+			<id>repo.snapshots</id>
+			<name>Citobi Internal Snapshots</name>
+			<url>http://repo.intranet.citobi.be/archiva/repository/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<dependencies>
+		<!-- File Transfer -->
+		<dependency>
+			<groupId>be.actito</groupId>
+			<artifactId>file-transfer</artifactId>
+			<version>19.12.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>be.citobi</groupId>
+					<artifactId>citobi-utils-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
