@@ -16,7 +16,6 @@ public class TransformColumnsImpl implements TransformColumns {
         this.rawFile = rawFile;
     }
 
-
     @Override
     public void orderBy() {
         log.debug("this is poorly coded...");
@@ -25,20 +24,15 @@ public class TransformColumnsImpl implements TransformColumns {
     @Override
     public void deleteByIndex(List<String> line) {
 
-        log.info("Removing columns from record");
-
         int[] idxToDelete = rawFile.getColumnsToDelete();
+        log.debug(String.format("Removing %d columns from record", idxToDelete.length));
 
         for (int idx = idxToDelete.length - 1; idx >= 0; idx--) {
 
             log.debug("Deleting column: " + idxToDelete[idx]);
-
             line.remove(idxToDelete[idx]);
         }
-
-        System.out.println("looped correctly?");
     }
-
 
     @Override
     public void deleteByHeaderName() {

@@ -28,7 +28,7 @@ public class FileWriter {
 
         RandomAccessFile stream = new RandomAccessFile("./src/main/resources/ProcessedFile.txt", "rw");
         //TODO: ^^ parameterize path
-        //TODO: check file doesn't already exist: overwrite if yes or throw error?
+        //TODO: check file doesn't already exist: overwrite if yes or throw error? [parameterize based on client preference...]
 
         stream.seek(stream.length());
         stream.write((formattedLine + "\r\n").getBytes());

@@ -15,8 +15,15 @@ public class FileTransformer {
 
     public void scanFile(RawFile rawFile, TransformColumns transformColumns, FileWriter fileWriter) throws IOException {
 
-        log.debug("started...");
+        log.debug("Starting file treatment.");
 
+        if(!rawFile.isHasHeader()) {
+            log.debug("File is lacking a header...");
+            fileWriter.printLine(rawFile.getHeaderVal());
+            log.debug("Header row added");
+        }
+
+        // iterate file contents
         FileInputStream inputStream = null;
         Scanner sc = null;
         try {
@@ -33,14 +40,6 @@ public class FileTransformer {
 //                log.debug("File has delimiter: " + rawDelim);
 //                //TODO: change the delimiter in the file...
 //            }
-
-
-            if(!rawFile.isHasHeader()) {
-                log.debug("File is lacking a header");
-                fileWriter.printLine(rawFile.getHeaderVal());
-                log.debug("Added header row");
-            }
-
 
 
 
