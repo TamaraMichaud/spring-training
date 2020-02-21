@@ -2,6 +2,9 @@ package com.tamara.springboottraining1.controller;
 
 import com.tamara.springboottraining1.model.RawFile;
 import com.tamara.springboottraining1.service.FileTransformer;
+import com.tamara.springboottraining1.service.FileWriter_test;
+import com.tamara.springboottraining1.service.TransformColumns;
+import com.tamara.springboottraining1.service.TransformColumnsImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -21,6 +24,11 @@ public class DemoController {
     RawFile fileToTreat;
     @Autowired
     FileTransformer fileTransformer;
+    @Autowired
+    TransformColumns transformColumns;
+    @Autowired
+    FileWriter_test fileWriter;
+
 
     @ResponseBody
     @GetMapping("demo")
@@ -46,11 +54,13 @@ public class DemoController {
 
         try {
             System.out.println("Here is the info about our file:");
-            fileTransformer.scanFile(fileToTreat);
+            fileTransformer.scanFile(fileToTreat, transformColumns, fileWriter);
 
         } catch (IOException e) {
             log.error("Failed to find file.");
             e.printStackTrace();
+            // TODO: trace exceptions, we have multiple: be accurate.
+
         }
 
         return "welcome";

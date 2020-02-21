@@ -1,10 +1,14 @@
 package com.tamara.springboottraining1.service;
 
+import com.tamara.springboottraining1.model.RawFile;
+
+import java.util.List;
+
 public interface TransformColumns {
 
-    void orderBy(int... indexesInOrder);
-    void deleteByIndex(int... indexesToDelete);
-    void deleteByHeaderName(String... headersToDelete);
-    void addColumn(String calculatedColumnContent);
+    void orderBy();
+    void deleteByIndex(List<String> line);
+    void deleteByHeaderName();
+    void addColumn(String calculatedColumnContent, int columnPositionIndex);
 
 }

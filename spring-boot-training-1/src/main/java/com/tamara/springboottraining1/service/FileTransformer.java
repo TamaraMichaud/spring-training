@@ -1,20 +1,19 @@
 package com.tamara.springboottraining1.service;
 
-import com.tamara.springboottraining1.Delimiters;
 import com.tamara.springboottraining1.model.RawFile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
 
 @Slf4j
 @Configuration
 public class FileTransformer {
 
 
-    public void scanFile(RawFile rawFile) throws IOException {
+    public void scanFile(RawFile rawFile, TransformColumns transformColumns, FileWriter_test fileWriter) throws IOException {
 
         log.debug("started...");
 
@@ -36,7 +35,11 @@ public class FileTransformer {
 //            }
 
 
-
+            if(!rawFile.isHasHeader()) {
+                log.debug("File is lacking a header");
+                fileWriter.printLine(rawFile.getHeaderVal());
+                log.debug("Added header row");
+            }
 
 
 
@@ -45,15 +48,16 @@ public class FileTransformer {
 //            sc = new Scanner(inputStream, rawFile.getEncoding()).useDelimiter(";"); // same as above (?)
             while (sc.hasNextLine()) {
 
-                String[] line = sc.nextLine().split(fileSeparator);
-//                String line = sc.nextLine();
-
-                System.out.println("Let's treat this line somehow... it has:");
-                System.out.println(line);
+//                List<String> line = Arrays.asList(sc.nextLine().split(fileSeparator));
+// ^^ NO!!
+                List<String> line = new LinkedList<>(Arrays.asList(sc.nextLine().split(fileSeparator)));
 
 
+                log.info(String.format("Line starts with %d columns", line.size()));
+                transformColumns.deleteByIndex(line);
+                log.info("Line now has: " + line.size() + "cols");
 
-
+                fileWriter.printLine(line);
 
             }
             // note that Scanner suppresses exceptions
